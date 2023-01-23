@@ -30,48 +30,15 @@ class NotesEndToEndTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeRule = createAndroidComposeRule<MainActivity>()
+    val composeRule =
+        createAndroidComposeRule<MainActivity>()
 
     @ExperimentalAnimationApi
     @Before
     fun setUp() {
         hiltRule.inject()
         composeRule.activity.setContent {
-            CleanArchitectureNoteAppTheme {
-                val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.NotesScreen.route
-                ) {
-                    composable(route = Screen.NotesScreen.route) {
-                        NotesScreen(navController = navController)
-                    }
-                    composable(
-                        route = Screen.AddEditNoteScreen.route +
-                                "?noteId={noteId}&noteColor={noteColor}",
-                        arguments = listOf(
-                            navArgument(
-                                name = "noteId"
-                            ) {
-                                type = NavType.IntType
-                                defaultValue = -1
-                            },
-                            navArgument(
-                                name = "noteColor"
-                            ) {
-                                type = NavType.IntType
-                                defaultValue = -1
-                            },
-                        )
-                    ) {
-                        val color = it.arguments?.getInt("noteColor") ?: -1
-                        AddEditNoteScreen(
-                            navController = navController,
-                            noteColor = color
-                        )
-                    }
-                }
-            }
+            CalculatorApp()
         }
     }
 
