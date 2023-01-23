@@ -1,5 +1,6 @@
 package com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.notes
 
+import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -30,13 +31,14 @@ class NotesScreenTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val composeRule = createAndroidComposeRule<MainActivity>()
+    val composeRule =
+        createAndroidComposeRule<MainActivity>()
 
     @ExperimentalAnimationApi
     @Before
     fun setUp() {
         hiltRule.inject()
-        composeRule.setContent {
+        composeRule.activity.setContent {
             val navController = rememberNavController()
             CleanArchitectureNoteAppTheme {
                 NavHost(
