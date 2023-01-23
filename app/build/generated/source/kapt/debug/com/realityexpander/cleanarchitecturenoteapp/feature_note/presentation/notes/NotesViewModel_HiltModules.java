@@ -29,7 +29,7 @@ public final class NotesViewModel_HiltModules {
 
     @Binds
     @IntoMap
-    @StringKey("com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesViewModel")
+    @StringKey("com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesViewModel")
     @HiltViewModelMap
     public abstract ViewModel binds(NotesViewModel vm);
   }
@@ -44,7 +44,7 @@ public final class NotesViewModel_HiltModules {
     @IntoSet
     @HiltViewModelMap.KeySet
     public static String provide() {
-      return "com.plcoding.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesViewModel";
+      return "com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.notes.NotesViewModel";
     }
   }
 }

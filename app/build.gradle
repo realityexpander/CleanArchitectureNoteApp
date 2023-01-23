@@ -9,10 +9,10 @@ plugins {
 android {
     compileSdk 33
 
-    namespace "com.plcoding.cleanarchitecturenoteapp"
+    namespace "com.realityexpander.cleanarchitecturenoteapp"
 
     defaultConfig {
-        applicationId "com.plcoding.cleanarchitecturenoteapp"
+        applicationId "com.realityexpander.cleanarchitecturenoteapp"
         minSdk 21
         targetSdk 33
         versionCode 1

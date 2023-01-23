@@ -4,13 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
 import androidx.room.RoomOpenHelper;
+import androidx.room.RoomOpenHelper.Delegate;
+import androidx.room.RoomOpenHelper.ValidationResult;
 import androidx.room.migration.AutoMigrationSpec;
 import androidx.room.migration.Migration;
 import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
+import androidx.room.util.TableInfo.Column;
+import androidx.room.util.TableInfo.ForeignKey;
+import androidx.room.util.TableInfo.Index;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
-
+import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
+import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -88,7 +94,7 @@ public final class NoteDatabase_Impl extends NoteDatabase {
         final TableInfo _infoNote = new TableInfo("Note", _columnsNote, _foreignKeysNote, _indicesNote);
         final TableInfo _existingNote = TableInfo.read(_db, "Note");
         if (! _infoNote.equals(_existingNote)) {
-          return new RoomOpenHelper.ValidationResult(false, "Note(com.plcoding.cleanarchitecturenoteapp.feature_note.domain.model.Note).\n"
+          return new RoomOpenHelper.ValidationResult(false, "Note(com.realityexpander.cleanarchitecturenoteapp.feature_note.domain.model.Note).\n"
                   + " Expected:\n" + _infoNote + "\n"
                   + " Found:\n" + _existingNote);
         }
