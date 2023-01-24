@@ -1,5 +1,7 @@
 package com.realityexpander.cleanarchitecturenoteapp.feature_note.domain.use_case
 
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth.assertThat
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.data.repository.FakeNoteRepository
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.domain.model.Note
@@ -36,6 +38,14 @@ class GetNotesTest {
             notesToInsert.forEach { fakeRepository.insertNote(it) }
         }
     }
+
+//    @Test
+//    fun `Get resource string from unit test res`() {
+//        val context = ApplicationProvider.getApplicationContext<Context>()
+//        val string = context.getString(com.realityexpander.cleanarchitecturenoteapp.R.string.app_name)
+//        println("string: $string")
+//        assertThat(string).isEqualTo("Clean Architecture Note App")
+//    }
 
     @Test
     fun `Order notes by title ascending, correct order`() = runBlocking {

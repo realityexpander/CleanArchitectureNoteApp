@@ -20,5 +20,12 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.realityexpander.cleanarchitecturenoteapp", appContext.packageName)
+
+        val string = appContext.getString(R.string.app_name)
+        println("string: $string")
+
+        val testContext = InstrumentationRegistry.getInstrumentation().context
+        val testString = testContext.getString(com.realityexpander.cleanarchitecturenoteapp.test.R.string.Sort)
+        println("testString: $testString")
     }
 }
