@@ -60,12 +60,12 @@ class NotesScreenTest {
     @Test
     fun clickToggleOrderSection_isVisible() {
 
-        // Access to AndroidTest resources/assets
+        // Access to AndroidTest resources/assets in src/androidTest/res
         val testContext = InstrumentationRegistry.getInstrumentation().context
         val testString = testContext.getString(com.realityexpander.cleanarchitecturenoteapp.test.R.string.Sort)
         println("R.string.Sort: $testString")
 
-        // Access to Main resources/assets
+        // Access to Main resources/assets in src/main/res
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         val string = targetContext.getString(R.string.app_name)
         println("R.string.app_name: $string")
