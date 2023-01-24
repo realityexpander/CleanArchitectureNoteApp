@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
@@ -95,4 +96,19 @@ fun NoteItem(
             )
         }
     }
+}
+
+@Preview(device = "spec:parent=Nexus One", showBackground = true, backgroundColor = 0xFF000000)
+@Composable
+fun NoteItemPreview() {
+    NoteItem(
+        note = Note(
+            id = 0,
+            title = "This is a note",
+            content = "This is the content of the note",
+            timestamp = 0,
+            color = 0xFF22B0EE.toInt()
+        ),
+        onDeleteClick = {}
+    )
 }
