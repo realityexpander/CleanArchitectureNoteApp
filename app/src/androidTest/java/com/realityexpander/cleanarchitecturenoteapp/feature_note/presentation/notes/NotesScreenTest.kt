@@ -60,7 +60,7 @@ class NotesScreenTest {
     @Test
     fun clickToggleOrderSection_isVisible() {
 
-        // Access to Test resources/assets
+        // Access to AndroidTest resources/assets
         val testContext = InstrumentationRegistry.getInstrumentation().context
         val testString = testContext.getString(com.realityexpander.cleanarchitecturenoteapp.test.R.string.Sort)
         println("R.string.Sort: $testString")
@@ -71,16 +71,15 @@ class NotesScreenTest {
         println("R.string.app_name: $string")
 
         // Access to Main resources/assets
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        // We can use the context to get the string resource (only in the test resources)
-        val targetString1 = context.resources.getString(com.realityexpander.cleanarchitecturenoteapp.test.R.string.app_name)
+        val targetContextAlt = ApplicationProvider.getApplicationContext<Context>()
+        val targetString1 = targetContextAlt.resources.getString(com.realityexpander.cleanarchitecturenoteapp.test.R.string.app_name)
         val targetString2 = composeRule.activity.getString(R.string.app_name)
-        println("sortKey: $targetString1, sortKey2: $targetString2")
+        println("targetString1: $targetString1, targetString2: $targetString2")
 
         composeRule.onNodeWithTag(TestTags.ORDER_SECTION).assertDoesNotExist()
 
         // We can use the content description to find the button (label should be a String Resource)
-        composeRule.onNodeWithContentDescription(targetString1).performClick()
+        composeRule.onNodeWithContentDescription(testString).performClick()
         composeRule.onNodeWithTag(TestTags.ORDER_SECTION).assertIsDisplayed()
     }
 }
