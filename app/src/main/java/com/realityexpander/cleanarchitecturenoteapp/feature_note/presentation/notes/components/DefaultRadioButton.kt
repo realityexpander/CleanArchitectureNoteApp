@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -33,10 +34,20 @@ fun DefaultRadioButton(
                 unselectedColor = MaterialTheme.colors.onBackground
             ),
             modifier = Modifier.semantics {
-                contentDescription = text
+                contentDescription = text // for accessibility & testing
             }
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = text, style = MaterialTheme.typography.body1)
     }
+}
+
+@Preview(device = "id:Nexus One", showBackground = true, backgroundColor = 0xFFE7E7E7)
+@Composable
+fun DefaultRadioButtonPreview() {
+    DefaultRadioButton(
+        text = "Title",
+        selected = true,
+        onSelect = { }
+    )
 }

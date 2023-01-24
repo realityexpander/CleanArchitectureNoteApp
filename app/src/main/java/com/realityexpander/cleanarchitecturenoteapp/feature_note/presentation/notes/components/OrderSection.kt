@@ -3,6 +3,7 @@ package com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.n
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.domain.util.NoteOrder
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.domain.util.OrderType
@@ -58,4 +59,15 @@ fun OrderSection(
             )
         }
     }
+}
+
+@Preview(device = "id:Nexus One", showSystemUi = false, showBackground = true,
+    backgroundColor = 0xFFF3F3F3
+)
+@Composable
+fun OrderSectionPreview() {
+    OrderSection(
+        noteOrder = NoteOrder.Date(OrderType.Descending),
+        onOrderChange = {}
+    )
 }
