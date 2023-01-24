@@ -15,6 +15,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import com.realityexpander.cleanarchitecturenoteapp.core.util.TestTags
 import com.realityexpander.cleanarchitecturenoteapp.di.AppModule
+import com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.CalculatorApp
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.MainActivity
 import com.realityexpander.cleanarchitecturenoteapp.feature_note.presentation.util.Screen
 import com.realityexpander.cleanarchitecturenoteapp.test.R
@@ -43,17 +44,21 @@ class NotesScreenTest {
     fun setUp() {
         hiltRule.inject()
         composeRule.activity.setContent {
-            val navController = rememberNavController()
-            CleanArchitectureNoteAppTheme {
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.NotesScreen.route
-                ) {
-                    composable(route = Screen.NotesScreen.route) {
-                        NotesScreen(navController = navController)
-                    }
-                }
-            }
+            CalculatorApp()
+
+            // Can just test any screen, doesn't matter which one.
+            // Left this here as an example of how to test a screen with navigation.
+//            val navController = rememberNavController()
+//            CleanArchitectureNoteAppTheme {
+//                NavHost(
+//                    navController = navController,
+//                    startDestination = Screen.NotesScreen.route
+//                ) {
+//                    composable(route = Screen.NotesScreen.route) {
+//                        NotesScreen(navController = navController)
+//                    }
+//                }
+//            }
         }
     }
 
