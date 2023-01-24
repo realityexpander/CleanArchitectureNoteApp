@@ -30,26 +30,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//    sourceSets {
-//        androidTest.java.srcDirs += 'src/androidTest/java'
-//        androidTest.resources.srcDirs += 'src/androidTest/res'
-//    }
-//    sourceSets {
-//        androidTest {
-//            java.srcDirs = ['src/androidTest/src']
-//            resources.srcDirs = ['src/androidTest/src']
-//        }
-//    }
-//    sourceSets {
-//        debug {
-//            res.srcDirs = ['src/main/res', 'src/test/res', 'src/androidTest/res', 'src/debug/res']
-//        }
-//    }
-//    testOptions {
-//        unitTests {
-//            includeAndroidResources = true
-//        }
-//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
