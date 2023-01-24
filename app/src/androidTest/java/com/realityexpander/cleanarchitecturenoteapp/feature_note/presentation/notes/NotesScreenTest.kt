@@ -46,7 +46,7 @@ class NotesScreenTest {
         composeRule.activity.setContent {
             CalculatorApp()
 
-            // Can just test any screen, doesn't matter which one.
+            // We can just test any screen, doesn't matter which one.
             // Left this here as an example of how to test a screen with navigation.
 //            val navController = rememberNavController()
 //            CleanArchitectureNoteAppTheme {
