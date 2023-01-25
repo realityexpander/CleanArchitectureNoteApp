@@ -11,6 +11,7 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class ImageApiServiceTest {
     private lateinit var service: ImageApiService
@@ -88,6 +89,20 @@ class ImageApiServiceTest {
             assertThat(photo.id).isEqualTo(572897)
             assertThat(photo.photographer).isEqualTo("eberhard grossgasteiger")
             assertThat(photo.photographer_url).isEqualTo("https://www.pexels.com/@eberhardgross")
+        }
+    }
+
+    @Test
+    fun getSearchedResult_path_correctForm() {
+        runBlocking {
+            enqueueMockResponse("ImageResponse.json")
+
+          service.getSearchedImage("nature", 5).body()
+            val request = runCatching {
+                server.takeRequest(timeout = 5, unit = TimeUnit.SECONDS)
+            }.getOrNull()
+
+            assertThat(request?.path).isEqualTo("/v1/search?query=nature&per_page=5")
         }
     }
 
