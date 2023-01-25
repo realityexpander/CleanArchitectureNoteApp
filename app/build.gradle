@@ -6,6 +6,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+//def CONFIG = { k -> "\"${project.properties.get(k)}\"" }
+def CONFIG = { k ->
+    if (project.properties.containsKey(k)) "\"${project.properties.get(k)}\""
+    else throw new RuntimeException("No such variable: " + k)
+}
+
 android {
     compileSdk 33
 
@@ -17,6 +23,9 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "BASE_URL", CONFIG("BASE_URL")) // from gradle.properties
+        buildConfigField("String", "AUTH_KEY", CONFIG("AUTH_KEY")) // from gradle.properties
 
         testInstrumentationRunner "com.realityexpander.cleanarchitecturenoteapp.HiltTestRunner"
         vectorDrawables {
@@ -93,6 +102,14 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.3.0"
 
+    // GSON
+    implementation 'com.google.code.gson:gson:2.10'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+
     // Local unit tests
     testImplementation "androidx.test:core:1.4.0"
     testImplementation "junit:junit:4.13.2"
@@ -102,6 +119,8 @@ dependencies {
     testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
     testImplementation "io.mockk:mockk:1.10.5"
     testImplementation "androidx.room:room-testing:$room_version"
+    //Mock Server
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.1.0-alpha04"
 
     // Instrumentation tests
