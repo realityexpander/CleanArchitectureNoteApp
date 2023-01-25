@@ -50,8 +50,10 @@ class ImageApiServiceTest {
         runBlocking {
             // Prepare fake response
             enqueueMockResponse("ImageResponse.json")
+
             //Send Request to the MockServer
             val responseBody = service.getSearchedImage("nature", 5).body()
+
             //Request received by the mock server
             val request = server.takeRequest()
             assertThat(responseBody).isNotNull()
